@@ -2,8 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
+import { getRequestContext } from '@cloudflare/next-on-pages';
+
 function getCloudflareDB(): any | null {
   try {
+    const ctx = getRequestContext();
+    if (ctx && ctx.env && ctx.env.DB) return ctx.env.DB;
+  } catch { /* noop */ }
+  
+  try {
+    if (typeof (globalThis as any).__env__?.DB !== 'undefined') {
+      return (globalThis as any).__env__.DB;
+    }
     if (typeof (globalThis as any).DB !== 'undefined') {
       return (globalThis as any).DB;
     }

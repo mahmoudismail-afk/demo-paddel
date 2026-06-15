@@ -1,13 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getRequestContext } from '@cloudflare/next-on-pages';
 
 export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
+function getCloudflareDB(): any | null {
+  try {
+    const ctx = getRequestContext();
+    if (ctx && ctx.env && ctx.env.DB) return ctx.env.DB;
+  } catch { /* noop */ }
+  
+  try {
+    if (typeof (globalThis as any).__env__?.DB !== 'undefined') {
+      return (globalThis as any).__env__.DB;
+    }
+    if (typeof (globalThis as any).DB !== 'undefined') {
+      return (globalThis as any).DB;
+    }
+  } catch { /* noop */ }
+  return null;
+}
+
 // GET /api/courts
 export async function GET() {
   try {
-    // Use the global DB binding injected by Cloudflare / wrangler dev
-    const db: D1Database = (globalThis as any).__env__?.DB || process.env.DB_BINDING;
+    const db = getCloudflareDB();
 
     if (!db) {
       return NextResponse.json([
