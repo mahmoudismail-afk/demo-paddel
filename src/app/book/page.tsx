@@ -546,10 +546,10 @@ export default function BookingPage() {
                               : status === 'booked'
                                 ? <span className="block-status-icon" style={{ color: 'rgba(255,80,100,0.85)' }}>Reserved ✕</span>
                                 : status === 'conflict'
-                                  ? <span className="block-status-icon" style={{ color: 'rgba(255,140,0,0.8)' }}>⊘</span>
+                                  ? <span className="block-status-icon" style={{ color: 'rgba(255,140,0,0.8)' }}>Blocked ⊘</span>
                                   : status === 'selected-conflict'
                                     ? <span className="block-status-icon" style={{ color: '#ff8c00' }}>⚠ Conflict</span>
-                                    : null
+                                    : <span className="block-status-icon" style={{ color: 'var(--text-muted)', opacity: 0.5 }}>Available</span>
                             }
                           </span>
                         </div>
