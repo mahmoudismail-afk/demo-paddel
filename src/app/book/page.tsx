@@ -568,7 +568,7 @@ export default function BookingPage() {
                       <div>
                         <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'block' }}>Selected Slot</span>
                         <span style={{ fontWeight: 700, color: 'var(--neon-blue)', fontSize: '1.05rem' }}>
-                          {formatTime12h(selectedStartTime)} → {formatTime12h(selectedEndTime)}
+                          {formatTime12h(selectedStartTime || '')} → {formatTime12h(selectedEndTime || '')}
                         </span>
                       </div>
                       <div style={{ textAlign: 'right' }}>
@@ -625,7 +625,7 @@ export default function BookingPage() {
             <div style={{ width: 1, height: 28, background: 'var(--border-color)', flexShrink: 0 }} />
             <div className="mini-summary-item">
               <span className="mini-label">Slot</span>
-              <span className="mini-value">{formatTime12h(selectedStartTime)} → {formatTime12h(selectedEndTime)}</span>
+              <span className="mini-value">{formatTime12h(selectedStartTime || '')} → {formatTime12h(selectedEndTime || '')}</span>
             </div>
             <div style={{ width: 1, height: 28, background: 'var(--border-color)', flexShrink: 0 }} />
             <div className="mini-summary-item">
