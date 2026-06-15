@@ -40,7 +40,7 @@ export default function AdminPage() {
       const res = await fetch('/api/admin', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      const data = await res.json();
+      const data = await res.json() as any;
       if (res.status === 401) {
         setIsAuthenticated(false);
         sessionStorage.removeItem('admin_token');
