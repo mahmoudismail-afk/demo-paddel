@@ -75,7 +75,7 @@ export async function PATCH(request: NextRequest) {
 
   try {
     const db = getCloudflareDB();
-    const body = await request.json();
+    const body = await request.json() as any;
     const { id, status } = body;
 
     if (!id || !status) {

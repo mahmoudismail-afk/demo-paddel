@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const db = getCloudflareDB();
-    const body = await request.json();
+    const body = await request.json() as any;
     const { courtId, playerName, playerPhone, date, startTime, endTime, duration } = body;
 
     if (!courtId || !playerName || !playerPhone || !date || !startTime || !endTime) {
