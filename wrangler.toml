@@ -1,0 +1,11 @@
+name = "stars-website"
+compatibility_date = "2024-03-20"
+pages_build_output_dir = ".vercel/output/static"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "stars-website"
+database_id = "c37cbeaa-7094-49a4-bd04-c4b309bdebd9"
+
+[vars]
+ADMIN_PASSWORD = "stars"
