@@ -13,12 +13,11 @@ const getLocalBookings = () => (globalThis as any).localBookings;
 const getLocalLock = () => (globalThis as any).localLock;
 const setLocalLock = (v: boolean) => (globalThis as any).localLock = v;
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
-
 function getCloudflareDB(): any | null {
   try {
-    const ctx = getRequestContext();
-    if (ctx && ctx.env && (ctx.env as any).DB) return (ctx.env as any).DB;
+    if (typeof process !== 'undefined' && (process.env as any).DB) {
+      return (process.env as any).DB;
+    }
   } catch { /* noop */ }
   
   try {
