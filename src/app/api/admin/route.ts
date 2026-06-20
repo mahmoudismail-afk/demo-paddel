@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getLocalDb } from '@/lib/localDb';
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'stars';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'development' ? 'stars' : crypto.randomUUID());
 
 function isAuthenticated(req: NextRequest) {
   const auth = req.headers.get('authorization') || '';

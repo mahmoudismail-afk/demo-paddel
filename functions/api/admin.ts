@@ -15,8 +15,8 @@ function isAuthenticated(request: Request, env: any) {
     return false;
   }
   
-  // Fallback to 'stars' if no env var is set
-  const expectedPassword = env && env.ADMIN_PASSWORD ? env.ADMIN_PASSWORD : 'stars';
+  // Fallback to a random unguessable string if no env var is set
+  const expectedPassword = env && env.ADMIN_PASSWORD ? env.ADMIN_PASSWORD : crypto.randomUUID();
     
   return password === expectedPassword;
 }
