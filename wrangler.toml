@@ -8,3 +8,11 @@ database_id = "f3ddcba1-0a4f-40e0-8bb5-0fb4c1a4fb46"
 
 [vars]
 ADMIN_PASSWORD = "admin"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "demo-paddel"
+database_id = "f3ddcba1-0a4f-40e0-8bb5-0fb4c1a4fb46"
+
+[env.production.vars]
+ADMIN_PASSWORD = "admin"
